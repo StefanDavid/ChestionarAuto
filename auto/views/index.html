@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en-US">
+<head profile="http://www.w3.org/2005/10/profile">
+  <meta charset="utf-8">
+  <title>Eleven Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+      var base_url = window.location.origin;
+      function verify(){
+          var code = document.getElementById('verification_code').value;
+        $.ajax({
+              url: base_url+'/test?code='+code,
+              success:  function(response) {
+                document.location.href = base_url+'/test?code='+code ;
+              },
+              error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                alert("Wrong code");
+    }       
+            });
+      }
+
+  </script>
+</head>
+
+<body style=" background-image: url('/bg.jpg');">
+    <center>
+    <h1>Welcome to Chestionar auto</h1>
+    <h3>Please insert your code to start the course</h3>
+
+    <form>
+        <input type="text" id="verification_code"><br><br>
+        <button onclick="verify()">Start test</button>
+    </form>
+</center>
+</body>
+</html>
